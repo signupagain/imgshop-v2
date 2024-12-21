@@ -1,0 +1,18 @@
+@use 'font';
+
+:root {
+	overflow: hidden auto;
+
+	& body {
+		position: absolute;
+	}
+}
+
+body {
+	overflow: hidden;
+	width: 100dvw;
+}
+
+:where(:any-link) {
+	text-decoration: none;
+}

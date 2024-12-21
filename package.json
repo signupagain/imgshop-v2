@@ -1,0 +1,39 @@
+{
+	"name": "imgshop-v2",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev -o",
+		"generate": "nuxt generate",
+		"preview": "node .output/server/index.mjs",
+		"postinstall": "nuxt prepare",
+		"prepare": "nuxt prepare",
+		"typecheck": "nuxt typecheck",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
+	"dependencies": {
+		"@nuxt/eslint": "0.7.4",
+		"@pinia/nuxt": "^0.9.0",
+		"eslint": "^8.57.0 || ^9.0.0",
+		"nuxt": "^3.14.1592",
+		"pinia": "^2.3.0",
+		"vue": "latest",
+		"vuetify": "^3.7.3"
+	},
+	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+	"devDependencies": {
+		"@mdi/js": "^7.4.47",
+		"@nuxt/fonts": "^0.10.0",
+		"@types/eslint-config-prettier": "^6.11.3",
+		"@vueuse/components": "^12.2.0",
+		"@vueuse/nuxt": "^12.2.0",
+		"eslint-config-prettier": "^9.1.0",
+		"prettier": "^3.4.2",
+		"sass-embedded": "^1.80.3",
+		"typescript": "^5.6.3",
+		"vue-tsc": "^2.1.6",
+		"vuetify-nuxt-module": "^0.18.3"
+	}
+}
