@@ -1,0 +1,34 @@
+<template>
+	<NuxtLink
+		to="/"
+		class="d-flex align-center text-h5"
+		:title="$config.public.appName"
+	>
+		<v-img
+			width="2em"
+			:src="logo"
+			:alt="`相機的描邊，它是${$config.public.appName}的Logo`"
+			:class="[$style.img, { active: useIsDark() }]"
+		/>
+		<strong
+			:class="$style.title"
+			class="on-surface"
+			v-text="$config.public.appName"
+		></strong>
+	</NuxtLink>
+</template>
+
+<script setup lang="ts">
+	import logo from 'assets/logo.svg'
+</script>
+
+<style lang="scss" module>
+	.img:global(.active) {
+		filter: invert(1);
+	}
+
+	.title {
+		font-family: 'Protest Strike';
+		line-height: 1.1;
+	}
+</style>
