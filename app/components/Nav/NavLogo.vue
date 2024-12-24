@@ -2,13 +2,14 @@
 	<NuxtLink
 		to="/"
 		class="d-flex align-center text-h5"
+		:class="$style['select-none']"
 		:title="$config.public.appName"
 	>
 		<v-img
 			width="2em"
 			:src="logo"
 			:alt="`相機的描邊，它是${$config.public.appName}的Logo`"
-			:class="[$style.img, { active: useIsDark() }]"
+			:class="$style.img"
 		/>
 		<strong
 			:class="$style.title"
@@ -23,7 +24,7 @@
 </script>
 
 <style lang="scss" module>
-	.img:global(.active) {
+	:global(.v-theme--dark) .img {
 		filter: invert(1);
 	}
 

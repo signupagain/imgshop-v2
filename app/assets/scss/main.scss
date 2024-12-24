@@ -2,6 +2,7 @@
 
 :root {
 	overflow: hidden auto;
+	scroll-behavior: smooth;
 
 	& body {
 		position: absolute;
@@ -14,5 +15,22 @@ body {
 }
 
 :where(:any-link) {
+	--color: var(--v-theme-info);
+
+	color: rgb(var(--color));
 	text-decoration: none;
+
+	transition: text-shadow 0.5s;
+
+	& svg {
+		transition: filter 0.5s;
+	}
+
+	&.active:hover {
+		text-shadow: 0 0 0.8em rgba(var(--color), 0.8);
+
+		& svg {
+			filter: drop-shadow(0 0 0.2em rgba(var(--color), 0.8));
+		}
+	}
 }

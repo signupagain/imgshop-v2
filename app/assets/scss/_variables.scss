@@ -1,5 +1,8 @@
 // shared
 $radius: 6px;
+$containerMaxWidth: 1800px;
+$scrollbarOffset: 16.5px; // prevent black line next to the scrollbar
+$maxContentWidth: min(100%, 1800px);
 
 // nav section
 $nav-banner-height: 55px;
