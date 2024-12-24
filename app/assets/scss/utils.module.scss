@@ -1,0 +1,21 @@
+@use 'variables' as var;
+
+.placeholder {
+	display: grid;
+	place-items: center;
+	height: 100%;
+}
+
+.title {
+	font-family: 'Protest Strike';
+	line-height: 1.1;
+}
+
+.form-wrapper {
+	width: min(500px, 100%);
+	padding: 0.5em 1em;
+}
+
+.select-none {
+	user-select: none;
+}
