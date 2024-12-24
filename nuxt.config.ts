@@ -65,7 +65,28 @@ export default defineNuxtConfig({
 			},
 		],
 	],
-	plugins: ['~~/plugins/api.ts'],
+
+	imports: {
+		presets: [
+			{
+				from: 'nanoid',
+				imports: ['nanoid'],
+			},
+		],
+	},
+
+	nitro: {
+		imports: {
+			presets: [
+				{
+					from: 'nanoid',
+					imports: ['nanoid'],
+				},
+			],
+		},
+	},
+
+	plugins: ['~~/plugins/api', '~~/plugins/swiper.client'],
 
 	vuetify: {
 		moduleOptions: {
