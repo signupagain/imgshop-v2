@@ -27,6 +27,7 @@
 		z-index: 1;
 
 		height: calc(100vh - var.$nav-banner-height);
+		min-height: 38rem;
 		margin: var.$nav-banner-height 0 0;
 	}
 
@@ -48,7 +49,7 @@
 	}
 
 	.bar {
-		width: clamp(230px, 70%, 750px);
+		width: clamp(14rem, 70%, 47rem);
 		margin: 0 var.$scrollbarOffset 0 0;
 	}
 
