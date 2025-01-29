@@ -1,3 +1,5 @@
+import { DETAILS_PATH } from './shared/constants/route'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: '2024-11-01',
@@ -14,6 +16,32 @@ export default defineNuxtConfig({
 	features: {
 		inlineStyles: false,
 		devLogs: false,
+	},
+
+	app: {
+		layoutTransition: { name: 'page', mode: 'out-in' },
+		pageTransition: { name: 'page', mode: 'out-in' },
+		keepalive: {
+			max: 3,
+		},
+	},
+
+	hooks: {
+		'pages:extend'(pages) {
+			const idPageParent: RouteNameArr = ['index', 'search']
+
+			pages.forEach(page => {
+				if (idPageParent.some(name => name === page.name)) {
+					page.children = page.children ?? []
+
+					page.children.push({
+						name: `${page.name}-id`,
+						path: `${DETAILS_PATH}/:id(\\d+)`,
+						file: '~/extendpages/SingleImgDetails.vue',
+					})
+				}
+			})
+		},
 	},
 
 	runtimeConfig: {
@@ -79,7 +107,7 @@ export default defineNuxtConfig({
 	],
 
 	imports: {
-		dirs: ['composables/**'],
+		dirs: ['composables/**', 'extendpages/**'],
 		presets: [
 			{
 				from: 'nanoid',
