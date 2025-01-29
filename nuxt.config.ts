@@ -19,7 +19,10 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			appName: process.env.NUXT_PUBLIC_APP_NAME,
+			imgGroupSize: process.env.NUXT_PUBLIC_IMG_GROUP_SIZE,
 		},
+		pexelsApiBaseUrl: process.env.NUXT_PEXELS_API_BASE_URL,
+		pexelsApiAuth: process.env.NUXT_PEXELS_API_AUTH,
 	},
 
 	experimental: {
@@ -67,6 +70,7 @@ export default defineNuxtConfig({
 	],
 
 	imports: {
+		dirs: ['composables/**'],
 		presets: [
 			{
 				from: 'nanoid',
@@ -95,7 +99,6 @@ export default defineNuxtConfig({
 				reloadOnFirstRequest: false,
 				viewportSize: true,
 				prefersColorScheme: false,
-
 				prefersColorSchemeOptions: {
 					useBrowserThemeOnly: false,
 				},
