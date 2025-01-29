@@ -29,7 +29,8 @@
 
 	const { y } = useWindowScroll()
 	const { width } = useWindowSize()
-	const routePrefix = ['search', 'user']
+
+	const specificRoutes: RouteNameArr = ['index', 'index-id']
 	const excludesRoutes: RouteNameArr = ['signup', 'signin']
 
 	const isError = computed(() => !!error.value)
@@ -37,8 +38,8 @@
 	const isExist = computed(
 		() =>
 			isError.value ||
-			routePrefix.some(val => route.name === val) ||
-			(!excludesRoutes.includes(route.name) && y.value >= 600)
+			(specificRoutes.includes(route.name) && y.value >= 600) ||
+			![...specificRoutes, ...excludesRoutes].includes(route.name)
 	)
 
 	const isSwitch = computed(() => width.value >= 700)

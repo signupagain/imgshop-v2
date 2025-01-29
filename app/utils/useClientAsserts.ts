@@ -19,3 +19,11 @@ export function assertIsMouseEvent(
 ): asserts value is MouseEvent {
 	if (!(value instanceof MouseEvent)) throw new Error('Not a MouseEvent.')
 }
+
+export function assertRouteExist(
+	value: string
+): asserts value is RouteNameArr[number] {
+	const router = useRouter()
+	if (!router.hasRoute(value))
+		throw new Error(`${value} is not detined in RouteNamedMap.`)
+}

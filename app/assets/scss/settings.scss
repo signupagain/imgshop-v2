@@ -4,8 +4,11 @@
  * Configures SASS variables and Vuetify overwrites
  */
 
+$appFontFamily: 'Noto Serif TC', 'Roboto', sans-serif;
+
 // https://vuetifyjs.com/features/sass-variables/`
 @use 'vuetify/settings' with (
 	$color-pack: false,
-	$layers: true
+	$body-font-family: $appFontFamily,
+	$rounded: false
 );
