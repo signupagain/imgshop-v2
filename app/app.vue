@@ -23,4 +23,12 @@
 
 		if (routeName !== 'gallery' && userData.value) await userStore.signout()
 	})
+
+	const router = useRouter()
+	const imgStore = useImageStore()
+
+	router.afterEach(to => {
+		if (to.name === 'index') imgStore.curTheme = ''
+		if (to.name === 'search') imgStore.curTheme = to.query.theme as string
+	})
 </script>

@@ -24,12 +24,9 @@
 </script>
 
 <style lang="scss" module>
+	@use 'assets/scss/utils.module';
+
 	:global(.v-theme--dark) .img {
 		filter: invert(1);
-	}
-
-	.title {
-		font-family: 'Protest Strike';
-		line-height: 1.1;
 	}
 </style>
