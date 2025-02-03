@@ -11,14 +11,6 @@
 	}>()
 </script>
 
-<style scoped>
-	:slotted(article:has(form)) {
-		width: min(500px, 100%);
-		padding: 0.5em 1em;
-		margin: 2em;
-	}
-</style>
-
 <style lang="scss" module>
 	.wrapper {
 		position: relative;
