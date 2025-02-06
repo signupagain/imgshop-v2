@@ -87,7 +87,13 @@ export default defineNuxtConfig({
 		},
 	},
 
-	css: ['assets/scss/main.scss'],
+	vue: {
+		compilerOptions: {
+			isCustomElement: tag => tag.startsWith('swiper-'),
+		},
+	},
+
+	css: ['assets/scss/main.scss', 'swiper'],
 	modules: [
 		'@nuxt/fonts',
 		'vuetify-nuxt-module',
