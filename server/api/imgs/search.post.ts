@@ -1,4 +1,4 @@
-import { PexelsMode } from '~~/shared/params/img'
+import { PexelsMode } from '~~/shared/constants/img'
 
 export default eventHandler({
 	async handler(event): Promise<ResultType> {

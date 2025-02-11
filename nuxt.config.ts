@@ -20,9 +20,17 @@ export default defineNuxtConfig({
 		public: {
 			appName: process.env.NUXT_PUBLIC_APP_NAME,
 			imgGroupSize: process.env.NUXT_PUBLIC_IMG_GROUP_SIZE,
+			accountLength: process.env.NUXT_PUBLIC_ACCOUNT_LENGTH,
+			jwtRefreshExp: process.env.NUXT_PUBLIC_JWT_REFRESH_EXP,
+			jwtAccessExp: process.env.NUXT_PUBLIC_JWT_ACCESS_EXP,
 		},
 		pexelsApiBaseUrl: process.env.NUXT_PEXELS_API_BASE_URL,
 		pexelsApiAuth: process.env.NUXT_PEXELS_API_AUTH,
+		mongodbUrl: process.env.NUXT_MONGODB_URL,
+		jwtPrivateKey: process.env.NUXT_JWT_PRIVATE_KEY,
+		jwtPublicKey: process.env.NUXT_JWT_PUBLIC_KEY,
+		jwtIssuer: process.env.NUXT_JWT_ISSUER,
+		jwtAudience: process.env.NUXT_JWT_AUDIENCE,
 	},
 
 	experimental: {
@@ -41,6 +49,7 @@ export default defineNuxtConfig({
 			preprocessorOptions: {
 				scss: {
 					additionalData: '@use "assets/scss/variables" as var;',
+					api: 'modern-compiler',
 				},
 			},
 			modules: {
