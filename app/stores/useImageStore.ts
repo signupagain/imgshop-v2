@@ -161,7 +161,7 @@ export const useImageStore = defineStore('IMGSTORE', () => {
 			curImgAmount
 		)
 
-		return useImgDataMap(displayEntries, curThemeOwnList.value)
+		return useImgDataMap(displayEntries, userData.value?.ownList)
 	})
 
 	const debouncedUpdateImg = useDebounceFn(
