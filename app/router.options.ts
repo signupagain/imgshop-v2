@@ -3,10 +3,10 @@ import type { RouterConfig } from 'nuxt/schema'
 export default {
 	sensitive: true,
 	strict: true,
-	scrollBehavior: async (to, from, savedPosition) => {
+	scrollBehavior(to, from) {
 		if (to.name.endsWith('-id') || from.name?.endsWith('-id')) return false
 
-		if (savedPosition) return savedPosition
+		if (to.name === from.name) return { top: 0, behavior: 'smooth' }
 
 		return { top: 0, behavior: 'smooth' }
 	},
