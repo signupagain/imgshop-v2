@@ -130,9 +130,11 @@ export const useImageStore = defineStore('IMGSTORE', () => {
 
 	const curThemeList = ref(new Map<string, imgDataType>())
 
+	const userStore = useUserStore()
+
 	watch(
-		[curTheme, curatedLibrary, imgLibrary],
-		([theme, curatedLib, imgLib]) => {
+		[curTheme, curatedLibrary, imgLibrary, () => userStore.userData?.ownList],
+		([theme, curatedLib, imgLib, ownList]) => {
 			let lib: singleLibType
 
 			if (theme === '') {
@@ -146,12 +148,7 @@ export const useImageStore = defineStore('IMGSTORE', () => {
 				perGroupSize * lib.localPage
 			)
 
-			const userStore = useUserStore()
-
-			curThemeList.value = useImgDataMap(
-				displayEntries,
-				userStore.userData?.ownList
-			)
+			curThemeList.value = useImgDataMap(displayEntries, ownList)
 		},
 		{ immediate: true, deep: 3 }
 	)

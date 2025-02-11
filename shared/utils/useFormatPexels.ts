@@ -12,14 +12,14 @@ export const formatSingleImg = (data: Photo): ImgType => {
 	return Object.fromEntries(
 		entries.filter(([key, _]) => !excludes.some(val => val === key))
 	)
-}
 
-function assertPhotoEntries(
-	data: Photo,
-	entries: [string, unknown][]
-): asserts entries is toEntries<Photo> {
-	entries.forEach(([key, val]) => {
-		assertIsKeyof(data, key)
-		if (data[key] !== val) throw new Error('Invalid key-value pair')
-	})
+	function assertPhotoEntries(
+		data: Photo,
+		entries: [string, unknown][]
+	): asserts entries is toEntries<Photo> {
+		entries.forEach(([key, val]) => {
+			assertIsKeyof(data, key)
+			if (data[key] !== val) throw new Error('Invalid key-value pair')
+		})
+	}
 }
