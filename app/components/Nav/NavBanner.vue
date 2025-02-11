@@ -1,20 +1,22 @@
 <template>
-	<component :is="tag" :class="$style.box" class="bg-surface elevation-5">
-		<div class="bg-surface" :class="$style.content">
-			<NavLogo />
-			<div :class="$style.wrapper">
-				<SearchBar
-					v-if="isSwitch && isExist"
-					variant="outlined"
-					class="bg-surface"
+	<Teleport to="#teleports">
+		<component :is="tag" :class="$style.box" class="bg-surface elevation-5">
+			<div class="bg-surface" :class="$style.content">
+				<NavLogo />
+				<div :class="$style.wrapper">
+					<SearchBar
+						v-if="isSwitch && isExist"
+						variant="outlined"
+						class="bg-surface"
+					/>
+				</div>
+				<NavMenu
+					:is-show-search-btn="!isSwitch && isExist"
+					:window-width="width"
 				/>
 			</div>
-			<NavMenu
-				:is-show-search-btn="!isSwitch && isExist"
-				:window-width="width"
-			/>
-		</div>
-	</component>
+		</component>
+	</Teleport>
 </template>
 
 <script setup lang="ts">
