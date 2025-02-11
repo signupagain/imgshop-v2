@@ -16,6 +16,11 @@ export default defineNuxtConfig({
 		devLogs: false,
 	},
 
+	app: {
+		layoutTransition: { name: 'page', mode: 'out-in' },
+		pageTransition: { name: 'page', mode: 'out-in' },
+	},
+
 	runtimeConfig: {
 		public: {
 			appName: process.env.NUXT_PUBLIC_APP_NAME,

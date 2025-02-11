@@ -4,8 +4,11 @@ export default {
 	sensitive: true,
 	strict: true,
 	scrollBehavior: (to, from, savedPosition) => {
+		const app = useNuxtApp()
+
 		return new Promise(resolve => {
-			if (savedPosition) resolve(savedPosition)
+			if (to.name === from.name && to.name === 'index')
+				return resolve({ top: 0, behavior: 'smooth' })
 
 			if (
 				to.name.endsWith('-id') ||
@@ -13,10 +16,15 @@ export default {
 			)
 				return resolve()
 
-			if (to.name === from.name && to.name !== 'search')
-				return resolve({ top: 0, behavior: 'smooth' })
+			app.hooks.hookOnce('page:finish', async () => {
+				await nextTick()
 
-			resolve({ top: 0, behavior: 'instant' })
+				if (savedPosition) resolve(savedPosition)
+
+				setTimeout(() => {
+					resolve({ top: 0, behavior: 'instant' })
+				}, 610)
+			})
 		})
 	},
 } satisfies RouterConfig

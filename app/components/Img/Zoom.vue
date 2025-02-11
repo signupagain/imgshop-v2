@@ -6,6 +6,7 @@
 	>
 		<v-img
 			ref="img"
+			transition="vimg"
 			crossorigin="anonymous"
 			:class="[$style.img, { active }]"
 			:alt

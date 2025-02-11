@@ -41,6 +41,7 @@
 						:alt="alt ?? '未命名'"
 						:src="src.large2x"
 						:lazy-src="src.small"
+						transition="vimg"
 					>
 						<template #placeholder>
 							<div :class="$style.placeholder">

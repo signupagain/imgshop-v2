@@ -36,6 +36,12 @@
 	onKeyStroke('Escape', toPush, { target: document })
 </script>
 
+<style lang="scss">
+	:root:has(dialog) {
+		overflow-y: scroll !important;
+	}
+</style>
+
 <style lang="scss" module>
 	.dialog {
 		height: 85vh;

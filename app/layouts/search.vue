@@ -2,7 +2,9 @@
 	<v-app style="overflow: auto">
 		<div :class="$style.box">
 			<NavBanner tag="header" />
-			<slot />
+			<main :class="$style.main">
+				<slot />
+			</main>
 			<AppFooter />
 		</div>
 	</v-app>
@@ -21,11 +23,15 @@
 		display: flex;
 		flex-flow: column;
 	}
+
+	.main {
+		flex: 1;
+		margin: var.$nav-banner-height 0 0;
+	}
 </style>
 
 <style lang="scss" scoped>
 	:slotted(div) {
-		flex: 1;
-		margin: var.$nav-banner-height 0 0;
+		height: 100%;
 	}
 </style>

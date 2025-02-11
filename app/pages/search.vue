@@ -8,7 +8,11 @@
 <script setup lang="ts">
 	definePageMeta({
 		layout: 'search',
-		middleware: ['check-img-theme', 'check-gallery-access'],
+		middleware: [
+			'check-img-theme',
+			'check-gallery-access',
+			'handle-details-page-transition',
+		],
 	})
 
 	const config = useRuntimeConfig()
