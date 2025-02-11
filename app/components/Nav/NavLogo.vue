@@ -5,8 +5,7 @@
 		:class="$style['select-none']"
 		:title="$config.public.appName"
 	>
-		<v-img
-			width="2em"
+		<img
 			:src="logo"
 			:alt="`相機的描邊，它是${$config.public.appName}的Logo`"
 			:class="$style.img"
@@ -26,7 +25,12 @@
 <style lang="scss" module>
 	@use 'assets/scss/utils.module';
 
-	:global(.v-theme--dark) .img {
-		filter: invert(1);
+	.img {
+		display: inline-block;
+		width: 2em;
+
+		body:has(:global(.v-theme--dark)) & {
+			filter: invert(1);
+		}
 	}
 </style>

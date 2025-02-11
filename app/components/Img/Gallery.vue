@@ -153,6 +153,22 @@
 	})
 
 	const event = useGalleryEvent()
+
+	const hooks = [onMounted, onActivated]
+
+	hooks.forEach(hook => {
+		hook(async () => await debouncedScroll())
+	})
+
+	const debouncedScroll = useDebounceFn(scroll, 100)
+
+	async function scroll() {
+		await nextTick()
+
+		const savedPosition = history.state?.scroll
+
+		if (savedPosition) scrollTo({ ...savedPosition, behavior: 'auto' })
+	}
 </script>
 
 <style lang="scss" module>
