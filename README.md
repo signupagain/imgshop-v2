@@ -1,75 +1,31 @@
-# Nuxt 3 Minimal Starter
+# ImgShop-v2
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Look at the [ImgShop-v2](https://imgshop-v2.netlify.app/) to learn more.
 
-## Setup
+## 關於作品
 
-Make sure to install the dependencies:
+### 功能
 
-```bash
-# npm
-npm install
+1. 無限滾動
+2. 圖片搜尋
+3. 簡單用戶功能
+   1. 註冊
+   2. 登入
+   3. 自動登入
+   4. 圖片增刪、放大
+4. 簡易訊息提示
+5. RWD
 
-# pnpm
-pnpm install
+### 主要使用技術
 
-# yarn
-yarn install
+1. Nuxt
+2. Vuetify
+3. Pinia
+4. JWT (josejs)
+5. MongoDB
+6. Swiper
+7. Zod
 
-# bun
-bun install
-```
+### 語言
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+TypeScript
