@@ -4,5 +4,5 @@ import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default withNuxt(
 	// Your custom configs here
-	[eslintConfigPrettier]
+	[eslintConfigPrettier, { rules: { 'vue/multi-word-component-names': 'off' } }]
 )

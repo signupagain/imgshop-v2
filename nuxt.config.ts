@@ -4,13 +4,12 @@ import { DETAILS_PATH } from './shared/constants/route'
 export default defineNuxtConfig({
 	compatibilityDate: '2024-11-01',
 	devtools: { enabled: true },
-	debug: import.meta.dev,
 
 	future: {
 		compatibilityVersion: 4,
 	},
 
-	ssr: true,
+	ssr: false,
 
 	// when enabling ssr option you need to disable inlineStyles and maybe devLogs
 	features: {
@@ -94,6 +93,7 @@ export default defineNuxtConfig({
 	},
 
 	css: ['assets/scss/main.scss', 'swiper'],
+
 	modules: [
 		'@nuxt/fonts',
 		'vuetify-nuxt-module',
@@ -102,12 +102,7 @@ export default defineNuxtConfig({
 		[
 			'@pinia/nuxt',
 			{
-				autoImports: [
-					// 自动引入 `defineStore()`
-					'defineStore',
-					// 自动引入 `defineStore()` 并重命名为 `definePiniaStore()`
-					['defineStore', 'definePiniaStore'],
-				],
+				autoImports: ['defineStore'],
 			},
 		],
 	],
@@ -131,9 +126,8 @@ export default defineNuxtConfig({
 				},
 			],
 		},
+		preset: 'netlify',
 	},
-
-	plugins: ['~~/plugins/api', '~~/plugins/swiper.client'],
 
 	vuetify: {
 		moduleOptions: {

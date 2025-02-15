@@ -13,7 +13,8 @@ export default function (
 
 	const timeLeft = refreshExp.value - curTime()
 
-	if (timeLeft < advanceTime || Math.abs(timeLeft) > expPeriod) return false
+	if (timeLeft < advanceTime || Math.abs(timeLeft) > expPeriod + advanceTime)
+		return false
 
 	clearToken.value = persist()
 
