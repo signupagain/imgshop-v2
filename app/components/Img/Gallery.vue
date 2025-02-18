@@ -76,7 +76,7 @@
 
 <script setup lang="ts">
 	import type { IntrinsicElementAttributes } from 'vue'
-	import { DETAILS_PATH } from '~~/shared/params/route'
+	import { DETAILS_PATH } from '~~/shared/constants/route'
 
 	const { tag = 'h1' } = defineProps<{
 		tag?: keyof IntrinsicElementAttributes

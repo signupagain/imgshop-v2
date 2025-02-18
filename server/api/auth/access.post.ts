@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb'
 import type { z } from 'zod'
-import { TokenKey } from '~~/shared/params/tokenKey'
+import { TokenKey } from '~~/shared/constants/tokenKey'
 
 export default eventHandler({
 	async handler(event) {

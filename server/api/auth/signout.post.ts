@@ -1,4 +1,4 @@
-import { TokenKey } from '~~/shared/params/tokenKey'
+import { TokenKey } from '~~/shared/constants/tokenKey'
 
 export default eventHandler({
 	async handler(event) {

@@ -1,4 +1,4 @@
-import { PexelsMode } from '#shared/params/img'
+import { PexelsMode } from '#shared/constants/img'
 
 type ReturnType<J> = J extends PexelsMode.Specific ? ImgType : ResultType
 

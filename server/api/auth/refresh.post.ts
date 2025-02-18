@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb'
-import { TokenKey } from '~~/shared/params/tokenKey'
+import { TokenKey } from '~~/shared/constants/tokenKey'
 import ms, { type StringValue } from 'ms'
 import type { z } from 'zod'
 

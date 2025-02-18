@@ -1,5 +1,5 @@
 import { StorageSerializers, useStorage } from '@vueuse/core'
-import { TokenKey } from '~~/shared/params/tokenKey'
+import { TokenKey } from '~~/shared/constants/tokenKey'
 
 export default () => {
 	if (!import.meta.client) return {}
