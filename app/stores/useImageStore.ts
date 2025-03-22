@@ -5,6 +5,7 @@ export type singleLibType = {
 	page: number
 	localPage: number
 	isFullyShown: boolean
+	isRemoteEmpty: boolean
 }
 
 export const useImageStore = defineStore('IMGSTORE', () => {
@@ -12,11 +13,14 @@ export const useImageStore = defineStore('IMGSTORE', () => {
 	const perGroupSize = +config.public.imgGroupSize
 	if (typeof perGroupSize !== 'number') throw new Error('Invalid imgGroupSize')
 
+	// #region curatedLibrary
+
 	const curatedLibrary = ref<singleLibType>({
 		photos: new Map(),
 		page: 1,
 		localPage: 1,
 		isFullyShown: false,
+		isRemoteEmpty: false,
 	})
 
 	const appendCuratedLibrary = async () => {
@@ -27,7 +31,12 @@ export const useImageStore = defineStore('IMGSTORE', () => {
 
 		if (curLibSize !== 0) curatedLibrary.value.localPage++
 
-		if (curLibSize > curDisplayAmount) return true
+		if (curLibSize >= curDisplayAmount) {
+			if (curatedLibrary.value.isRemoteEmpty)
+				curatedLibrary.value.isFullyShown = true
+
+			return true
+		}
 
 		const data = await useSearchRequest({
 			mode: PexelsMode.Curated,
@@ -42,12 +51,16 @@ export const useImageStore = defineStore('IMGSTORE', () => {
 			curatedLibrary.value.photos.set(`id${img.id}`, img)
 		})
 
-		if (!data.next_page) curatedLibrary.value.isFullyShown = true
+		if (!data.next_page) curatedLibrary.value.isRemoteEmpty = true
 
 		curatedLibrary.value.page++
 
 		return true
 	}
+
+	// #endregion
+
+	// #region imgLibrary
 
 	const imgLibrary = ref<Map<string, singleLibType>>(new Map())
 
@@ -73,13 +86,14 @@ export const useImageStore = defineStore('IMGSTORE', () => {
 
 		if (typeof data === 'number' || !data) return false
 
-		const isFullyShown = !data.next_page
+		const isRemoteEmpty = !data.next_page
 
 		imgLibrary.value.set(query, {
 			photos: new Map(),
 			page: 1,
 			localPage: 1,
-			isFullyShown,
+			isFullyShown: false,
+			isRemoteEmpty,
 		})
 
 		data.photos.forEach(img => {
@@ -103,7 +117,11 @@ export const useImageStore = defineStore('IMGSTORE', () => {
 
 		if (singleLib.photos.size !== 0) singleLib.localPage++
 
-		if (singleLib.photos.size > curDisplayAmount) return true
+		if (singleLib.photos.size >= curDisplayAmount) {
+			if (singleLib.isRemoteEmpty) singleLib.isFullyShown = true
+
+			return true
+		}
 
 		const page = singleLib.page + 1
 
@@ -121,12 +139,14 @@ export const useImageStore = defineStore('IMGSTORE', () => {
 			singleLib.photos.set(`id${img.id}`, img)
 		})
 
-		if (!data.next_page) singleLib.isFullyShown = true
+		if (!data.next_page) singleLib.isRemoteEmpty = true
 
 		singleLib.page++
 
 		return true
 	}
+
+	// #endregion
 
 	const curThemeList = ref(new Map<string, imgDataType>())
 
@@ -162,9 +182,9 @@ export const useImageStore = defineStore('IMGSTORE', () => {
 		curatedLibrary,
 		appendCuratedLibrary,
 		imgLibrary,
-		curTheme,
 		getImages,
 		appendImages,
+		curTheme,
 		curThemeList,
 		throttledUpdateImg,
 	}
